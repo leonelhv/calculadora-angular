@@ -1,11 +1,8 @@
 <div class="my-5">
   <div class="calculadora">
-    <input
-      type="text"
-      value="{{ displayNumber }}"
-      disabled
-      class="input_calculadora"
-    />
+    <app-input-calculadora
+      [displayNumber]="displayNumber"
+    ></app-input-calculadora>
 
     <div class="grid_botones">
       <div class="container_boton" *ngFor="let boton of botones">
