@@ -1,0 +1,21 @@
+<div class="my-5">
+  <div class="calculadora">
+    <input
+      type="text"
+      value="{{ displayNumber }}"
+      disabled
+      class="input_calculadora"
+    />
+    <div>
+      <div class="row row-cols-4">
+        <button
+          (click)="displayPress(boton)"
+          class="border-0"
+          *ngFor="let boton of botones"
+        >
+          {{ boton }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

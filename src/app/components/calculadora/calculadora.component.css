@@ -1,0 +1,11 @@
+.calculadora {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+}
+.input_calculadora {
+  text-align: right;
+}
