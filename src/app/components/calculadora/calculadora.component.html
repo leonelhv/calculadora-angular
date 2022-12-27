@@ -6,13 +6,10 @@
       disabled
       class="input_calculadora"
     />
-    <div>
-      <div class="row row-cols-4">
-        <button
-          (click)="displayPress(boton)"
-          class="border-0"
-          *ngFor="let boton of botones"
-        >
+
+    <div class="grid_botones">
+      <div class="container_boton" *ngFor="let boton of botones">
+        <button (click)="displayPress(boton)" class="border-0">
           {{ boton }}
         </button>
       </div>

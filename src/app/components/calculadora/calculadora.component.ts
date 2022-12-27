@@ -6,22 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculadora.component.css'],
 })
 export class CalculadoraComponent {
-  displayNumber: string = '1213';
+  operadores: string[] = ['*', '/', '-', '+'];
+  displayNumber: string = '0';
+  operador: string = '';
   datos: string = '';
 
   botones: string[] = [
-    '7',
-    '8',
     '9',
-    '-',
+    '8',
+    '7',
+    '6',
     '4',
     '5',
-    '6',
-    '+',
-    '1',
-    '2',
     '3',
+    '2',
+    '1',
+    '+',
+    '0',
     '.',
+    '-',
     '*',
     '/',
     '<-',
@@ -29,14 +32,30 @@ export class CalculadoraComponent {
   ];
 
   displayPress(value: string) {
-    if (!this.validarButton(value)) return;
-    this.displayNumber = this.displayNumber + value;
+    if (this.displayNumber === '0') this.displayNumber = '';
+    if (this.validarButton(value) === false) return;
+    this.displayNumber = this.datos + value;
+    this.datos = this.displayNumber;
   }
 
   validarButton(value: string): boolean {
+    const ultimoDato = this.datos.toString().slice(-1);
+
+    if (ultimoDato === value && this.operadores.includes(value)) {
+      this.datos = this.datos.toString().slice(0, -1);
+      this.displayNumber = this.datos;
+      return false;
+    }
+
     switch (value) {
       case '<-':
-        this.displayNumber = this.displayNumber.slice(0, -1);
+        this.displayNumber = this.displayNumber.toString().slice(0, -1);
+        this.datos = this.displayNumber;
+
+        return false;
+      case '=':
+        this.datos = eval(this.datos);
+        this.displayNumber = this.datos;
         return false;
       default:
         return true;
